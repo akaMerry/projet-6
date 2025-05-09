@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - Photographe</title>
+  </head>
+  <body
+    class="font-[DM_Sans] m-0 pt-[50px] pb-[50px] w-[1440px] flex flex-col justify-self-center"
+  >
+    <header class="flex flex-row items-center justify-between h-[90px]">
+      <a href="index.html" class="ml-[100px]" alt="Fisheye Homepage"
+        ><img src="assets/logo.png" class="logo h-[50px]" alt="Fisheye logo" />
+      </a>
+    </header>
+    <main id="main">
+      <div class="photographer-header"></div>
+    </main>
+    <div
+      id="contact_modal"
+      class="fixed inset-0 bg-gray-100/50 flex items-center justify-center z-3"
+    >
+      <div
+        class="modal flex w-2xl max-w-2xl h-4xl max-h-4xl p-8 rounded-sm shadow-2xl relative"
+      >
+        <header>
+          <div class="flex justify-between">
+            <h1 class="flex text-6xl">Contactez-moi</h1>
+            <img
+              class="close-btn flex"
+              src="assets/icons/close.svg"
+              alt="Close contact form"
+            />
+          </div>
+          <h1 class="photographer_name flex text-6xl mt-2 mb-2"></h1>
+        </header>
+        <form>
+          <div class="formData">
+            <label for="first name">Prénom</label>
+            <input
+              aria-labelledby="first name"
+              class="text-control bg-white border-none"
+              type="text"
+              id="first name"
+              name="first"
+              autocomplete="on"
+              required
+              minlength="2"
+            />
+          </div>
+          <div class="form-data">
+            <label for="last name">Nom</label>
+            <input
+              aria-labelledby="last name"
+              class="text-control bg-white border-none"
+              type="text"
+              id="last name"
+              name="last"
+              autocomplete="on"
+              required
+              minlength="2"
+            />
+          </div>
+          <div class="formData">
+            <label for="email">E-mail</label>
+            <input
+              aria-labelledby="email"
+              class="text-control bg-white border-none"
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="on"
+              required
+            />
+          </div>
+          <div class="formData">
+            <label for="your message">Votre message</label>
+            <textarea
+              aria-labelledby="your message"
+              class="text-control bg-white border-none w-full rounded-sm"
+              id="your message"
+              name="message"
+              rows="6"
+              autocomplete="on"
+              required
+              minlength="10"
+            ></textarea>
+          </div>
+          <button class="contact_button" alt="Send" type="submit">
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="sort" aria-label=""></div>
+    <div
+      class="gallery grid grid-cols-3 h-78.5 w-310 ml-24 mr-24 gap-x-23 gap-y-3 justify-items-center"
+    ></div>
+    <div
+      id="lightbox_modal"
+      class="lightbox_modal hidden fixed inset-0 bg-white items-center justify-center z-3"
+    >
+      <!-- Penser à retirer le hidden évidemment -->
+    </div>
+    <script src="./scripts/pages/photographer-page.js" type="module"></script>
+    <script src="./scripts/utils/contactForm.js" type="module"></script>
+  </body>
+</html>
