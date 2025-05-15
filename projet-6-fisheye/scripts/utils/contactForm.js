@@ -77,8 +77,6 @@ form.addEventListener("submit", function (event) {
     const userData = Object.fromEntries(data.entries());
     console.log(userData);
     // Le fomulaire est caché lorsqu'il est validé
-    if (valid) {
-      form.style.display = "none";
-    }
+    form.style.display = "none";
   }
 });

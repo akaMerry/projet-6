@@ -17,6 +17,7 @@ export function galleryTemplate() {
       img.setAttribute("src", media.custompath);
       img.setAttribute("alt", media.title);
       img.setAttribute("data-id", img.id);
+      img.setAttribute("href", media.medialink);
       mediaPreview.appendChild(img);
     } else if (media.type === "video") {
       video = document.createElement("video");
@@ -26,6 +27,7 @@ export function galleryTemplate() {
       source.src = media.custompath;
       source.type = "video/mp4";
       source.setAttribute("data-id", video.id);
+      source.setAttribute("href", media.medialink);
       video.appendChild(source);
       mediaPreview.appendChild(video);
     }
@@ -33,15 +35,15 @@ export function galleryTemplate() {
     // Classes Tailwind CSS
     mediaPreview.className = "h-75 w-87.5 rounded-sm overflow-hidden";
     if (media.type === "video") {
-      video.className = "preview w-full h-full object-cover rounded-sm";
+      video.className = "w-full h-full object-cover rounded-sm";
     } else {
-      img.className = "preview w-full h-full object-cover rounded-sm";
+      img.className = "w-full h-full object-cover rounded-sm";
     }
     titleAndLikes.className = "flex justify-between items-center w-full mt-2";
     title.className = "text-base text-primary-red text-xl";
     likes.className = "text-base text-primary-red text-xl";
     article.className =
-      "flex flex-col justify-center items-center bg-white w-87.5 h-87.5";
+      "preview flex flex-col justify-center items-center bg-white w-87.5 h-87.5";
 
     // On rattache les éléments
     titleAndLikes.appendChild(title);
