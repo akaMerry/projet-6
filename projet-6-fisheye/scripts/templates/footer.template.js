@@ -21,7 +21,7 @@ export function footerTemplate() {
 
     // Classes Tailwind CSS
     grid.className =
-      "grid flex grid-cols-2 items-center h-full w-full pl-4 pr-4 -mt-1 text-black text-xl font-semibold";
+      "grid flex grid-cols-2 items-center h-full w-full pl-8 pr-8 -mt-1 text-black text-xl font-semibold";
     likes.className = "flex items-center justify-start";
     heartIcon.className = "fas fa-heart ml-2";
     price.className = "flex justify-end";
@@ -32,6 +32,7 @@ export function footerTemplate() {
     price.appendChild(priceText);
     grid.appendChild(likes);
     grid.appendChild(price);
+
     return grid;
   }
 

@@ -8,8 +8,8 @@ export function galleryTemplate() {
     title.textContent = media.title;
     const likes = document.createElement("p");
     const likeicon = document.createElement("i");
-    likeicon.className = "fas fa-heart";
     likes.textContent = `${media.likes} `;
+
     // Vérification du type de média : image ou vidéo
     let img, video;
     if (media.type === "image") {
@@ -35,15 +35,18 @@ export function galleryTemplate() {
     // Classes Tailwind CSS
     mediaPreview.className = "h-75 w-87.5 rounded-sm overflow-hidden";
     if (media.type === "video") {
-      video.className = "w-full h-full object-cover rounded-sm";
+      video.className =
+        "preview cursor-pointer w-full h-full object-cover rounded-sm";
     } else {
-      img.className = "w-full h-full object-cover rounded-sm";
+      img.className =
+        "preview cursor-pointer w-full h-full object-cover rounded-sm";
     }
     titleAndLikes.className = "flex justify-between items-center w-full mt-2";
+    likeicon.className = "fas fa-heart cursor-pointer";
     title.className = "text-base text-primary-red text-xl";
     likes.className = "text-base text-primary-red text-xl";
     article.className =
-      "preview flex flex-col justify-center items-center bg-white w-87.5 h-87.5";
+      "flex flex-col justify-center items-center bg-white w-87.5 h-87.5";
 
     // On rattache les éléments
     titleAndLikes.appendChild(title);
@@ -51,6 +54,23 @@ export function galleryTemplate() {
     titleAndLikes.appendChild(likes);
     article.appendChild(mediaPreview);
     article.appendChild(titleAndLikes);
+
+    // Compteur de likes
+    let liked = false;
+    let currentLikes = media.likes;
+
+    likeicon.addEventListener("click", () => {
+      if (!liked) {
+        liked = true;
+        currentLikes += 1;
+        likeicon.classList.add("text-red-500");
+      } else {
+        liked = false;
+        currentLikes -= 1;
+        likeicon.classList.remove("text-red-500");
+      }
+      likes.firstChild.nodeValue = `${currentLikes} `;
+    });
 
     return article;
   }

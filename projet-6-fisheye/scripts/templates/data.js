@@ -41,7 +41,6 @@ export async function getMedia() {
         type: isImage ? "image" : "video",
         file: isImage ? image : video,
         custompath: `assets/images/${isImage ? image : video}`,
-        medialink: `/photographer.html?id=${photographerId}&mediaId=${id}`,
       };
     }
   );

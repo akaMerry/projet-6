@@ -7,14 +7,16 @@ export async function contactModal() {
   const { photographers } = await getPhotographers();
   // ouverture et fermeture de la modale
   function displayModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "flex";
+    const contactModal = document.getElementById("contact_modal");
+    contactModal.classList.remove("hidden");
+    contactModal.classList.add("flex");
     // Pour afficher le nom du photographe dans la modale
     displayNameForm(photographers);
   }
   function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    const contactModal = document.getElementById("contact_modal");
+    contactModal.classList.remove("flex");
+    contactModal.classList.add("hidden");
   }
   // Ecouteurs sur les boutons d'ouverture et de fermeture de la modale
   modalBtn.forEach((btn) => btn.addEventListener("click", displayModal));

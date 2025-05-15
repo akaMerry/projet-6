@@ -4,38 +4,26 @@ export function lightboxModal() {
   const modalNext = document.querySelectorAll(".next-btn");
   const modalPrevious = document.querySelectorAll(".previous-btn");
 
-  // Ouverture de la modale
+  // Ouverture de la lightbox
   function openLightboxModal() {
     const lightboxModal = document.getElementById("lightbox_modal");
     lightboxModal.classList.remove("hidden");
     lightboxModal.classList.add("flex");
   }
 
-  // Fermeture de la modale
+  // Fermeture de la lightbox
   function closeLightboxModal() {
     const lightboxModal = document.getElementById("lightbox_modal");
     lightboxModal.classList.remove("flex");
     lightboxModal.classList.add("hidden");
   }
 
-  // Événements pour les boutons
+  // Ecouteurs d'événements sur les boutons d'ouverture
   modalBtn.forEach((btn) => {
     btn.addEventListener("click", openLightboxModal);
   });
 
   modalClose.forEach((btn) => {
     btn.addEventListener("click", closeLightboxModal);
-  });
-
-  modalNext.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      console.log("Next image");
-    });
-  });
-
-  modalPrevious.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      console.log("Previous image");
-    });
   });
 }

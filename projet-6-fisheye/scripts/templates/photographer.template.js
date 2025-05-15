@@ -6,7 +6,7 @@ export function photographerTemplate() {
     img.setAttribute("src", photographer.picture);
     const link = document.createElement("a");
     link.setAttribute("href", photographer.customlink);
-    link.setAttribute("aria-labelledby", photographer.name);
+    link.setAttribute("aria-label", photographer.name);
     const h2 = document.createElement("h2");
     h2.textContent = photographer.name;
     const h3 = document.createElement("h3");

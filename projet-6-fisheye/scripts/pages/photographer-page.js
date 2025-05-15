@@ -27,7 +27,9 @@ function displayGallery(media) {
   const gallery = document.querySelector(".gallery");
   gallery.innerHTML = "";
   const galleryModel = galleryTemplate();
-  media.forEach((mediaItem) => {
+
+  media.forEach((mediaItem, index) => {
+    mediaItem.index = index;
     const mediaCardDOM = galleryModel.getMediaCardDOM(mediaItem);
     gallery.appendChild(mediaCardDOM);
   });
@@ -79,22 +81,24 @@ function displayFooter(photographers, media) {
 async function init() {
   const { photographers } = await getPhotographers();
   const { media } = await getMedia();
-  allMedia = media;
 
   const urlParams = new URLSearchParams(window.location.search);
   currentPhotographerId = urlParams.get("id");
+
   // Filtrage des médias du photographe courant
-  const photographerMedia = allMedia.filter(
+  const photographerMedia = media.filter(
     (item) => item.photographerId.toString() === currentPhotographerId
   );
+
   // Tri initial par popularité
   photographerMedia.sort((a, b) => b.likes - a.likes);
+
   displayHeader(photographers);
   displayGallery(photographerMedia);
   SortMedia(photographerMedia);
-  displayFooter(photographers, allMedia);
+  displayFooter(photographers, media);
   contactModal();
-  lightboxModal();
+  lightboxModal(photographerMedia);
 }
 
 init();
