@@ -22,7 +22,7 @@ export function photographerHeaderTemplate() {
     h2.className = "text-2xl text-primary-red mt-4 pl-15 pr-15";
     description.className = "text-lg text-gray-600 mt-4 pl-15 pr-15";
     contact.className =
-      "modal-btn col-span-1 self-center h-17 w-43 bg-primary-red text-white text-xl font-semibold rounded-lg hover:bg-secondary-red hover:shadow-lg hover:text-black transition duration-200 ease-in-out";
+      "modal-btn cursor-pointer col-span-1 self-center h-17 w-43 bg-primary-red text-white text-xl font-semibold rounded-lg hover:bg-tertiary-red hover:shadow-lg hover:text-black transition duration-400 ease-in-out";
     img.className =
       "col-span-1 self-center w-50 h-50 object-cover rounded-full shadow-lg ml-20";
     grid.className =

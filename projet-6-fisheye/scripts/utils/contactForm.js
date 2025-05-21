@@ -1,4 +1,4 @@
-import { getPhotographers } from "/scripts/templates/data.js";
+import { getPhotographers } from "/scripts/services/data.js";
 
 export async function contactModal() {
   const modalBtn = document.querySelectorAll(".modal-btn");
@@ -64,7 +64,7 @@ form.addEventListener("submit", function (event) {
         }
         break;
 
-      case "email":
+      case "e-mail":
         if (!emailRegex.test(value)) {
           customError =
             "Veuillez entrer une adresse e-mail valide contenant @ et .";

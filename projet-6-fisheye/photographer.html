@@ -10,7 +10,7 @@
     />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="icon" type="image/png" href="assets/icons/logo.png" />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
       rel="stylesheet"
@@ -22,7 +22,11 @@
   >
     <header class="flex flex-row items-center justify-between h-[90px]">
       <a href="index.html" class="ml-[100px]" alt="Fisheye Homepage"
-        ><img src="assets/logo.png" class="logo h-[50px]" alt="Fisheye logo" />
+        ><img
+          src="assets/images/logo.png"
+          class="logo h-[50px]"
+          alt="Fisheye logo"
+        />
       </a>
     </header>
     <main id="main">
@@ -31,18 +35,59 @@
       <!-- Tri -->
       <div class="sortby ml-24 mr-24 mt-5 mb-5 w-full flex items-center">
         <p class="sortby_text flex mr-5 font-bold">Trier par</p>
-        <select
-          class="sortby_select flex h-17 w-43 bg-primary-red text-white text-xl font-semibold rounded-lg"
-          name="sortby"
-          aria-label="sort by"
-          aria-labelledby="8"
-          id="8"
-        >
-          <option value="popular">Popularité</option>
-          <option value="date">Date</option>
-          <option value="title">Titre</option>
-        </select>
+
+        <div class="relative group" id="sortby" aria-expanded="false">
+          <button
+            class="sortby_button cursor-pointer items-center justify-between px-4 flex h-17 w-43 bg-primary-red text-white text-xl font-semibold rounded-lg"
+            id="sortby_button"
+            aria-label="sort by"
+          >
+            <p class="sortby_text">Popularité</p>
+            <i
+              class="fa-solid fa-chevron-down group-aria-[expanded=true]:rotate-180 transition"
+            ></i>
+          </button>
+          <ul
+            class="sortby_options hidden absolute top-full left-0 w-full z-20 shadow-xl flex-col group-aria-[expanded=true]:flex"
+            id="sortby_options"
+          >
+            <li
+              class="sortby_option cursor-pointer justify-center flex bg-primary-red hover:bg-tertiary-red hover:text-black transition duration-400 ease-in-out"
+              aria-label="sort by popularity"
+            >
+              <p
+                data-value="popular"
+                class="border-t-1 text-white hover:text-black border-white text-xl font-semibold w-37.5 p-4 transition duration-400 ease-in-out"
+              >
+                Popularité
+              </p>
+            </li>
+            <li
+              class="sortby_option cursor-pointer flex justify-center bg-primary-red hover:bg-tertiary-red transition duration-400 ease-in-out"
+              aria-label="sort by date"
+            >
+              <p
+                data-value="date"
+                class="border-t-1 text-white hover:text-black border-white text-xl font-semibold w-37.5 p-4 transition duration-400 ease-in-out"
+              >
+                Date
+              </p>
+            </li>
+            <li
+              class="sortby_option cursor-pointer flex justify-center rounded-b-lg bg-primary-red hover:bg-tertiary-red transition duration-400 ease-in-out"
+              aria-label="sort by title"
+            >
+              <p
+                data-value="title"
+                class="border-t-1 text-white hover:text-black border-white text-xl font-semibold w-37.5 p-4 transition duration-400 ease-in-out"
+              >
+                Titre
+              </p>
+            </li>
+          </ul>
+        </div>
       </div>
+
       <!-- Galerie -->
       <div
         class="gallery grid grid-cols-3 h-78.5 w-310 ml-24 mr-24 gap-x-23 gap-y-3 justify-items-center"
@@ -50,12 +95,12 @@
     </main>
     <!-- Infos -->
     <footer
-      class="info fixed right-10 -bottom-4 z-3 bg-tertiary-red w-94 h-22.5 rounded-md"
+      class="info fixed right-10 -bottom-4 z-10 bg-tertiary-red w-94 h-22.5 rounded-md"
     ></footer>
     <!-- Modale du formulaire de contact -->
     <div
       id="contact_modal"
-      class="contact_modal fixed inset-0 bg-gray-100/50 hidden items-center justify-center z-3"
+      class="contact_modal hidden fixed inset-0 bg-gray-100/50 items-center justify-center z-10"
     >
       <div
         id="contact_form"
@@ -142,15 +187,14 @@
         </form>
       </div>
     </div>
+
     <!-- Modale de la lightbox -->
     <div
       id="lightbox_modal"
-      class="lightbox_modal hidden fixed inset-0 bg-gray-100/50 items-center justify-center z-3"
+      class="lightbox_modal hidden fixed inset-0 bg-gray-100/50 items-center justify-center z-10"
     >
-      <div
-        class="bg-white grid grid-cols-3 h-246 w-313.5 justify-items-center relative"
-      >
-        <div class="flex items-center">
+      <div class="bg-white flex flex-row h-246 w-313.5">
+        <div class="previous-media flex justify-center items-center w-24">
           <button
             class="previous-btn cursor-pointer"
             aria-label="Previous image"
@@ -158,10 +202,12 @@
             <img src="assets/icons/previous.svg" alt="Previous image" />
           </button>
         </div>
-        <div class="media-container items-center justify-center h-225 w-262.5">
-          <p class="title"></p>
+        <div
+          class="media-container flex-col justify-center items-center h-225 w-262.5"
+        >
+          <p class="media-title flex bottom-0"></p>
         </div>
-        <div class="flex items-center">
+        <div class="next-media flex justify-center items-center w-24">
           <button
             class="close-btn cursor-pointer top-5 absolute"
             aria-label="Close dialog"

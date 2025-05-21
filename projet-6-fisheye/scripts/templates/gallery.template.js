@@ -1,5 +1,5 @@
 export function galleryTemplate() {
-  function getMediaCardDOM(media) {
+  function getMediaCardDOM(media, updateFooterLikes) {
     // Création des éléments
     const article = document.createElement("article");
     const mediaPreview = document.createElement("div");
@@ -16,18 +16,15 @@ export function galleryTemplate() {
       img = document.createElement("img");
       img.setAttribute("src", media.custompath);
       img.setAttribute("alt", media.title);
-      img.setAttribute("data-id", img.id);
-      img.setAttribute("href", media.medialink);
+      img.setAttribute("data-id", media.id); // Utilisation de l'ID unique du média
       mediaPreview.appendChild(img);
     } else if (media.type === "video") {
       video = document.createElement("video");
-      // Pour différencier les photos et les vidéos, on garde les controles de la vidéo
       video.controls = true;
       const source = document.createElement("source");
       source.src = media.custompath;
       source.type = "video/mp4";
-      source.setAttribute("data-id", video.id);
-      source.setAttribute("href", media.medialink);
+      source.setAttribute("data-id", media.id); // Utilisation de l'ID unique du média
       video.appendChild(source);
       mediaPreview.appendChild(video);
     }
@@ -41,14 +38,15 @@ export function galleryTemplate() {
       img.className =
         "preview cursor-pointer w-full h-full object-cover rounded-sm";
     }
+
     titleAndLikes.className = "flex justify-between items-center w-full mt-2";
-    likeicon.className = "fas fa-heart cursor-pointer";
+    likeicon.className = "fas fa-heart cursor-pointer"; // Class à ajouter au like
     title.className = "text-base text-primary-red text-xl";
     likes.className = "text-base text-primary-red text-xl";
     article.className =
       "flex flex-col justify-center items-center bg-white w-87.5 h-87.5";
 
-    // On rattache les éléments
+    // Rattacher les éléments
     titleAndLikes.appendChild(title);
     likes.appendChild(likeicon);
     titleAndLikes.appendChild(likes);
@@ -57,19 +55,22 @@ export function galleryTemplate() {
 
     // Compteur de likes
     let liked = false;
-    let currentLikes = media.likes;
-
     likeicon.addEventListener("click", () => {
       if (!liked) {
         liked = true;
-        currentLikes += 1;
+        media.likes += 1;
         likeicon.classList.add("text-red-500");
       } else {
         liked = false;
-        currentLikes -= 1;
+        media.likes -= 1;
         likeicon.classList.remove("text-red-500");
       }
-      likes.firstChild.nodeValue = `${currentLikes} `;
+
+      // Mise à jour des likes dans la galerie
+      likes.firstChild.nodeValue = `${media.likes} `;
+
+      // AMise à jour des likes dans le footer
+      updateFooterLikes();
     });
 
     return article;

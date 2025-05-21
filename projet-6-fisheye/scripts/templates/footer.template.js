@@ -1,6 +1,6 @@
 export function footerTemplate() {
   function getFooterDOM(photographer, media) {
-    // Filtrage des médias du photographe pour calculer le total des likes
+    // Filtrage des médias du photographe en fonction de son ID pour calculer le total des likes
     const photographerMedia = media.filter(
       (item) => item.photographerId.toString() === photographer.id.toString()
     );
@@ -23,7 +23,8 @@ export function footerTemplate() {
     grid.className =
       "grid flex grid-cols-2 items-center h-full w-full pl-8 pr-8 -mt-1 text-black text-xl font-semibold";
     likes.className = "flex items-center justify-start";
-    heartIcon.className = "fas fa-heart ml-2";
+    likesNumber.className = "footer-likes";
+    heartIcon.className = "fas fa-heart ml-2 footer-likes-icon";
     price.className = "flex justify-end";
 
     // Rattachement des éléments
